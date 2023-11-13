@@ -18,6 +18,7 @@ public class Post {
 	private String title;            // タイトル
 	private String content;          // 内容
 	private LocalDateTime createdAt; // 投稿日時
+	private String feel;
 	
 	/**
 	 * コンストラクタ
@@ -30,6 +31,11 @@ public class Post {
 		this.createdAt = LocalDateTime.now();
 	}
 
+	public Post(String title, String content, String feel) {
+		this(title, content);
+		this.feel = feel;
+	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -40,6 +46,14 @@ public class Post {
 
 	public String getCreatedAt() {
 		return createdAt.format(FMT);
+	}
+
+	public static DateTimeFormatter getFmt() {
+		return FMT;
+	}
+
+	public String getFeel() {
+		return feel;
 	}
 	
 }
