@@ -55,6 +55,7 @@ public class BlogController {
 	public String post(
 			@RequestParam(name = "title", defaultValue = "") String title,
 			@RequestParam(name = "content", defaultValue = "") String content,
+			@RequestParam("feel") String feel,
 			 Model model) {
 		// 入力値のチェック
 		if (title.isEmpty() && content.isEmpty()) {
@@ -64,7 +65,7 @@ public class BlogController {
 		// セッションスコープから投稿のリストを取得
 		List<Post> allPosts = postList.getPosts();
 		// 受け取ったリクエストパラメータをリストに追加
-		allPosts.add (new Post(title, content));
+		allPosts.add (new Post(title, content, feel));
 		// 画面遷移
 		return "blog";
 	}

@@ -16,6 +16,13 @@
 	</ul>
 	<form action="/blog" method="post">
 		<p><input type="text" name="title" placeholder="タイトル" /></p>
+		<p>
+			<select name="feel">
+				<option> 😀 </option>
+				<option> 😆 </option>
+				<option> 😂 </option>
+			</select>
+		</p>
 		<p><textarea name="content" placeholder="内容"></textarea></p>
 		<p><button>投稿する</button></p>
 	</form>
@@ -24,11 +31,13 @@
 		<tr>
 			<th>日時</th>
 			<th>タイトル</th>
+			<th>気分</th>
 			<th>書き込み</th>
 		</tr>
 		<tr th:each="post : ${@postList.posts}">
 			<td th:text="${post.createdAt}"></td>
 			<td th:text="${post.title}"></td>
+			<td th:text="${post.feel}"></td>
 			<td th:utext="${post.content}"></td>
 		</tr>
 	</table>
