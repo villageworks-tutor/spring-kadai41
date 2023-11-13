@@ -56,6 +56,11 @@ public class BlogController {
 			@RequestParam(name = "title", defaultValue = "") String title,
 			@RequestParam(name = "content", defaultValue = "") String content,
 			 Model model) {
+		// 入力値のチェック
+		if (title.isEmpty() && content.isEmpty()) {
+			// 未入力の場合：エラーメッセージをスコープに登録
+			model.addAttribute("error", "タイトルと書き込み内容を入力してください");
+		}
 		// セッションスコープから投稿のリストを取得
 		List<Post> allPosts = postList.getPosts();
 		// 受け取ったリクエストパラメータをリストに追加
