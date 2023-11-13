@@ -3,10 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <title>日記</title>
+<style>
+	.error {color: tomato;}
+</style>
 </head>
 <body>
 	<h1>日記</h1>
 	<p>こんにちは、[[${@account.name}]]さん</p>
+	<p class="error" th:if="${error}" th:text="${error}"></p>
 	<ul>
 		<li th:each="error : ${errorList}" th:text="${error}"></li>
 	</ul>
