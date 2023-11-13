@@ -41,6 +41,10 @@ public class Post {
 	}
 
 	public String getContent() {
+		// 書き込み内容が「http://」または「https://」からはじまっていた場合はリンクを生成
+		if (content.startsWith("http://") || content.startsWith("https://")) {
+			return "<a href='" + content + "'>" + content + "</a>";
+		}
 		return content.replaceAll("\n", "<br />");
 	}
 
